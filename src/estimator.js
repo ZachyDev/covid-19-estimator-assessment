@@ -22,22 +22,6 @@ const covid19ImpactEstimator = (data) => {
         const impactTotal = data.reportedCases * 10;
         return impactTotal;
       },
-      infectionsAsByRequestedTime: () => {
-        const impactInfectionsAsRequested = outputData.impact.currentlyInfected() * 1024;
-        return impactInfectionsAsRequested;
-      }
-    },
-    // severe impact estimation
-    severeImpact: {
-      currentlyInfected: () => {
-        const severeTotal = data.reportedCases * 50;
-        return severeTotal;
-      },
-      infectionsAsByRequestedTime: () => {
-        const severeImpactAsRequested = outputData.severeImpact.currentlyInfected() * 1024;
-        return severeImpactAsRequested;
-      }
-    }, // **** GRADR CHALLENGE 1 END *****
 
     // ******** GRADR CHALLENGE 2 START **********
 
