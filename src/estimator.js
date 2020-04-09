@@ -109,7 +109,7 @@ const covid19ImpactEstimator = (data) => {
     },
     dollarsInFlight: {
       dollarsInFlightLoseForImpact: () => {
-        const economyLose = (outputData.impact.infectionsAsByRequestedTime()) * (data.region.avgDailyIncomeInUSD) * 30;
+        const economyLose = (outputData.impact.infectionsAsByRequestedTime()) * (data.region.avgDailyIncomeInUSD) * 30 * (data.region.avgDailyIncomePopulation);
         console.log(
           `
                 The Economy will lose ${economyLose} in a period of 1 month as per impact estimation
@@ -118,7 +118,7 @@ const covid19ImpactEstimator = (data) => {
         return economyLose;
       },
       dollarsInFlightLoseForSevereImpact: () => {
-        const economyLose = (outputData.severeImpact.infectionsAsByRequestedTime()) * (data.region.avgDailyIncomeInUSD) * 30;
+        const economyLose = (outputData.severeImpact.infectionsAsByRequestedTime()) * (data.region.avgDailyIncomeInUSD) * 30 * (data.region.avgDailyIncomePopulation);
         console.log(
           `
                 The Economy will lose ${economyLose} in a period of 1 month as per severe impact estimation

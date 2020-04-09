@@ -21,7 +21,7 @@ module.exports = {
     "no-param-reassign": ["error", { "props": false }],
     "no-console": "off",
     "linebreak-style": "off",
-    "max-len": [1, 150, 4],
+    "max-len": [1, 170, 4],
   
   },
 };
