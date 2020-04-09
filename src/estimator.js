@@ -12,7 +12,7 @@ const inputData = {
     totalHospitalBeds: 1380614
 }
            // **************************** GRADR CHALLENGE 1 START *****************************************************
-const covid19ImpactEstimator = (data) => {
+    const covid19ImpactEstimator = (data) => {
     // output data
     const outputData = {
         data: { inputData },
