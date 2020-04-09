@@ -1,4 +1,4 @@
-const inputData = {
+var inputData = {
     region: {
     name: "Africa",
     avgAge: 19.7,
