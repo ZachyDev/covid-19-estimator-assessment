@@ -106,26 +106,6 @@ const covid19ImpactEstimator = (data) => {
         const severeCasesThatRequireVentilator = 0.02 * (outputData.severeImpact.infectionsAsByRequestedTime());
         return Math.floor(severeCasesThatRequireVentilator);
       }
-    },
-    dollarsInFlight: {
-      dollarsInFlightLoseForImpact: () => {
-        const economyLose = (outputData.impact.infectionsAsByRequestedTime()) * (data.region.avgDailyIncomeInUSD) * 30 * (data.region.avgDailyIncomePopulation);
-        console.log(
-          `
-                The Economy will lose ${economyLose} in a period of 1 month as per impact estimation
-                `
-        );
-        return economyLose;
-      },
-      dollarsInFlightLoseForSevereImpact: () => {
-        const economyLose = (outputData.severeImpact.infectionsAsByRequestedTime()) * (data.region.avgDailyIncomeInUSD) * 30 * (data.region.avgDailyIncomePopulation);
-        console.log(
-          `
-                The Economy will lose ${economyLose} in a period of 1 month as per severe impact estimation
-                `
-        );
-        return economyLose;
-      }
     }
 
 
@@ -136,8 +116,8 @@ const covid19ImpactEstimator = (data) => {
     // console.log(outputData.severeCasesByRequestedTime.hospitalBedsByRequestedTimeForImpact())
     // console.log(outputData.casesForVentilatorsByRequestedTime.severePositiveForVentilatorsAsPerSevereImpact())
     // console.log(outputData.name.user())
-  console.log(outputData.dollarsInFlight.dollarsInFlightLoseForImpact());
-  console.log(outputData.dollarsInFlight.dollarsInFlightLoseForSevereImpact());
+  // console.log(outputData.dollarsInFlight.dollarsInFlightLoseForImpact());
+  // console.log(outputData.dollarsInFlight.dollarsInFlightLoseForSevereImpact());
 };
 covid19ImpactEstimator(inputData);
 
