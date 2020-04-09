@@ -18,6 +18,10 @@ module.exports = {
   },
   rules: {
     "comma-dangle": ["error", "never"],
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "no-console": "off",
+    "linebreak-style": "off",
+    "max-len": [1, 150, 4],
+  
   },
 };
