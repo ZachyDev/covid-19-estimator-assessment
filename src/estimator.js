@@ -22,6 +22,22 @@ const covid19ImpactEstimator = (data) => {
         const impactTotal = data.reportedCases * 10;
         return impactTotal;
       },
+      infectionsAsByRequestedTime: () => {
+        const impactInfectionsAsRequested = outputData.impact.currentlyInfected() * 1024;
+        return impactInfectionsAsRequested;
+      }
+    },
+    // severe impact estimation
+    severeImpact: {
+      currentlyInfected: () => {
+        const severeTotal = data.reportedCases * 50;
+        return severeTotal;
+      },
+      infectionsAsByRequestedTime: () => {
+        const severeImpactAsRequested = outputData.severeImpact.currentlyInfected() * 1024;
+        return severeImpactAsRequested;
+      }
+    }, // **** GRADR CHALLENGE 1 END *****
 
     // ******** GRADR CHALLENGE 2 START **********
 
@@ -90,6 +106,26 @@ const covid19ImpactEstimator = (data) => {
         const severeCasesThatRequireVentilator = 0.02 * (outputData.severeImpact.infectionsAsByRequestedTime());
         return Math.floor(severeCasesThatRequireVentilator);
       }
+    },
+    dollarsInFlight: {
+      dollarsInFlightLoseForImpact: () => {
+        const economyLose = (outputData.impact.infectionsAsByRequestedTime()) * (data.region.avgDailyIncomeInUSD) * 30 * (data.region.avgDailyIncomePopulation);
+        console.log(
+          `
+                The Economy will lose ${economyLose} in a period of 1 month as per impact estimation
+                `
+        );
+        return economyLose;
+      },
+      dollarsInFlightLoseForSevereImpact: () => {
+        const economyLose = (outputData.severeImpact.infectionsAsByRequestedTime()) * (data.region.avgDailyIncomeInUSD) * 30 * (data.region.avgDailyIncomePopulation);
+        console.log(
+          `
+                The Economy will lose ${economyLose} in a period of 1 month as per severe impact estimation
+                `
+        );
+        return economyLose;
+      }
     }
 
 
@@ -106,4 +142,4 @@ const covid19ImpactEstimator = (data) => {
 covid19ImpactEstimator(inputData);
 
 
-export default covid19ImpactEstimator;
+// export default covid19ImpactEstimator;
