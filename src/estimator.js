@@ -14,15 +14,15 @@ const estimateImpact = (currentlyInfected, data) => {
   const { region, totalHospitalBeds } = data;
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = region;
 
-  const factor = Math.floor(days / 3);
+  const factor = Math.trunc(days / 3);
   const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
   const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
 
   const beds = (0.35 * totalHospitalBeds) - severeCasesByRequestedTime;
-  const hospitalBedsByRequestedTime = Math.floor(beds);
+  const hospitalBedsByRequestedTime = Math.trunc(beds);
 
-  const casesForICUByRequestedTime = Math.floor(0.05 * infectionsByRequestedTime);
-  const casesForVentilatorsByRequestedTime = Math.floor(0.02 * infectionsByRequestedTime);
+  const casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
+  const casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
 
   const economyLose = infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * days;
   const dollarsInFlight = economyLose;
