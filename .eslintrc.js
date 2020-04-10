@@ -23,6 +23,7 @@ module.exports = {
     "no-restricted-properties": "off",
     "max-len": [1,170,3],
     "no-console": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "eol-last": "off"
   },
 };
