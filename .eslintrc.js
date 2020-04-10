@@ -24,6 +24,7 @@ module.exports = {
     "max-len": [1,170,3],
     "no-console": "off",
     "arrow-body-style": "off",
-    "eol-last": "off"
+    "eol-last": "off",
+    "no-unused-vars": "off"
   },
 };
