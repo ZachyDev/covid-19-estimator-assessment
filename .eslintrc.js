@@ -25,6 +25,7 @@ module.exports = {
     "no-console": "off",
     "arrow-body-style": "off",
     "eol-last": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "consistent-return": "off"
   },
 };

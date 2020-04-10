@@ -18,42 +18,40 @@ const covid19ImpactEstimator = (data) => {
     data: { inputData },
     // impact estimation
     impact: {
-      currentlyInfected: data.reportedCases * 10,
+      currentlyInfected: Object(data.reportedCases * 10),
       infectionsAsByRequestedTime: () => {
         // chech the periodType
         if (data.periodType === 'days') {
           const power = Math.floor(data.timeToElapse / 3);
-          return outputData.impact.currentlyInfected * Math.pow(2, power);
+          return Object(outputData.impact.currentlyInfected * Math.pow(2, power));
         } if (data.periodType === 'weeks') {
           const days = (data.timeToElapse * 7);
           const power = Math.floor(days / 3);
-          return outputData.impact.currentlyInfected * Math.pow(2, power);
+          return Object(outputData.impact.currentlyInfected * Math.pow(2, power));
         } if (data.periodType === 'months') {
           const days = (data.timeToElapse * 30);
           const power = Math.floor(days / 3);
-          return outputData.impact.currentlyInfected * Math.pow(2, power);
+          return Object(outputData.impact.currentlyInfected * Math.pow(2, power));
         }
-        return 'Invalid period type';
       }
     },
     // severe impact estimation
     severeImpact: {
-      currentlyInfected: data.reportedCases * 50,
+      currentlyInfected: Object(data.reportedCases * 50),
       infectionsAsByRequestedTime: () => {
         // chech the periodType
         if (data.periodType === 'days') {
           const power = Math.floor(data.timeToElapse / 3);
-          return outputData.severeImpact.currentlyInfected * Math.pow(2, power);
+          return Object(outputData.severeImpact.currentlyInfected * Math.pow(2, power));
         } if (data.periodType === 'weeks') {
           const days = (data.timeToElapse * 7);
           const power = Math.floor(days / 3);
-          return outputData.severeImpact.currentlyInfected * Math.pow(2, power);
+          return Object(outputData.severeImpact.currentlyInfected * Math.pow(2, power));
         } if (data.periodType === 'months') {
           const days = (data.timeToElapse * 30);
           const power = Math.floor(days / 3);
-          return outputData.severeImpact.currentlyInfected * Math.pow(2, power);
+          return Object(outputData.severeImpact.currentlyInfected * Math.pow(2, power));
         }
-        return 'Invalid period type';
       }
     }, // **** GRADR CHALLENGE 1 END *****
 
@@ -112,10 +110,11 @@ const covid19ImpactEstimator = (data) => {
       }
     }
   };
+  console.log(typeof (outputData.impact.currentlyInfected));
   return outputData;
 };
 covid19ImpactEstimator(inputData);
-module.exports = covid19ImpactEstimator;
+// module.exports = covid19ImpactEstimator;
 
 
 //   export default covid19ImpactEstimator;
