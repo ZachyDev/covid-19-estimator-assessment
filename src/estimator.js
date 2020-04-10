@@ -117,4 +117,4 @@ covid19ImpactEstimator(inputData);
 // module.exports = covid19ImpactEstimator;
 
 
-//   export default covid19ImpactEstimator;
+export default covid19ImpactEstimator;
