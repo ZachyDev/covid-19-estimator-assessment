@@ -126,7 +126,7 @@ const covid19ImpactEstimator = (data) => {
     // eslint-disable-next-line max-len
     currentlyInfected, infectionsByRequestedTime, severeCasesByRequestedTime, hospitalBedsByRequestedTime, casesForICUByRequestedTime, casesForVentilatorsByRequestedTime, dollarsInFlight
   } = { impact, severeImpact };
-  return {
+  return ({
     currentlyInfected,
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
@@ -135,7 +135,7 @@ const covid19ImpactEstimator = (data) => {
     casesForVentilatorsByRequestedTime,
     dollarsInFlight
 
-  };
+  });
   // testing my code
   // console.log('impact ' + severeImpact.severeCasesByRequestedTime())
   // console.log('impact ' + severeImpact.hospitalBedsByRequestedTime());
@@ -147,4 +147,5 @@ const covid19ImpactEstimator = (data) => {
   // console.log(severeImpact.casesForICUByRequestedTime());
   // console.log(severeImpact.casesForVentilatorsByRequestedTime())
 };
+covid19ImpactEstimator(inputData);
 export default covid19ImpactEstimator;
