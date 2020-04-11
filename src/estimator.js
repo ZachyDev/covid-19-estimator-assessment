@@ -121,8 +121,21 @@ const covid19ImpactEstimator = (data) => {
     }
   };
   // destruct from impact and severe impact objects
-  // const { impact, severeImpact } = outputData;
-  return outputData;
+  const { impact, severeImpact } = outputData;
+  const {
+    // eslint-disable-next-line max-len
+    currentlyInfected, infectionsByRequestedTime, severeCasesByRequestedTime, hospitalBedsByRequestedTime, casesForICUByRequestedTime, casesForVentilatorsByRequestedTime, dollarsInFlight
+  } = { impact, severeImpact };
+  return {
+    currentlyInfected,
+    infectionsByRequestedTime,
+    severeCasesByRequestedTime,
+    hospitalBedsByRequestedTime,
+    casesForICUByRequestedTime,
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
+
+  };
   // testing my code
   // console.log('impact ' + severeImpact.severeCasesByRequestedTime())
   // console.log('impact ' + severeImpact.hospitalBedsByRequestedTime());
@@ -134,5 +147,4 @@ const covid19ImpactEstimator = (data) => {
   // console.log(severeImpact.casesForICUByRequestedTime());
   // console.log(severeImpact.casesForVentilatorsByRequestedTime())
 };
-module.exports = covid19ImpactEstimator;
-// export default covid19ImpactEstimator;
+export default covid19ImpactEstimator;
