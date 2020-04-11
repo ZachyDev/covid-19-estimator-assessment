@@ -139,4 +139,4 @@ const covid19ImpactEstimator = (data) => {
   // console.log(severeImpact.casesForVentilatorsByRequestedTime());
 };
 console.log(covid19ImpactEstimator(inputData));
-// export default covid19ImpactEstimator;
+export default covid19ImpactEstimator;
