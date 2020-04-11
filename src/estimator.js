@@ -7,8 +7,8 @@ const inputData = {
     avgDailyIncomeInUSD: 5,
     avgDailyIncomePopulation: 0.71
   },
-  periodType: 'days',
-  timeToElapse: 38,
+  periodType: 'weeks',
+  timeToElapse: 1,
   reportedCases: 2747,
   population: 92931687,
   totalHospitalBeds: 1380614
@@ -137,4 +137,4 @@ const covid19ImpactEstimator = (data) => {
 };
 covid19ImpactEstimator(inputData);
 
-// export default covid19ImpactEstimator;
+export default covid19ImpactEstimator;
