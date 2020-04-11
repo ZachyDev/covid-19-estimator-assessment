@@ -9,7 +9,7 @@ const inputData = {
   },
   periodType: 'weeks',
   timeToElapse: 1,
-  reportedCases: 2747,
+  reportedCases: 674,
   population: 92931687,
   totalHospitalBeds: 1380614
 };
@@ -121,10 +121,15 @@ const covid19ImpactEstimator = (data) => {
     }
   };
   // destruct from impact and severe impact objects
-  // const { impact, severeImpact } = outputData;
+  const { impact, severeImpact } = outputData;
+  return ({
+    data,
+    impact,
+    severeImpact
+  });
   // testing my code
-  // console.log('impact ' + severeImpact.currentlyInfected);
-  // console.log('impact ' + severeImpact.infectionsByRequestedTime());
+  // console.log('impact ' + impact.currentlyInfected);
+  // console.log('impact ' + impact.infectionsByRequestedTime());
   // console.log('impact ' + severeImpact.severeCasesByRequestedTime());
   // console.log('impact ' + severeImpact.hospitalBedsByRequestedTime());
   // console.log('impact ' + severeImpact.casesForICUByRequestedTime());
