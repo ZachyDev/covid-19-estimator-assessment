@@ -122,7 +122,7 @@ const covid19ImpactEstimator = (data) => {
   };
   // destruct from impact and severe impact objects
   // const { impact, severeImpact } = outputData;
-  // return outputData;
+  return outputData;
   // testing my code
   // console.log('impact ' + severeImpact.severeCasesByRequestedTime())
   // console.log('impact ' + severeImpact.hospitalBedsByRequestedTime());
@@ -134,5 +134,5 @@ const covid19ImpactEstimator = (data) => {
   // console.log(severeImpact.casesForICUByRequestedTime());
   // console.log(severeImpact.casesForVentilatorsByRequestedTime())
 };
-
-export default covid19ImpactEstimator;
+module.exports = covid19ImpactEstimator(inputData);
+// export default covid19ImpactEstimator;
