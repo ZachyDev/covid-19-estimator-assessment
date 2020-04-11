@@ -121,23 +121,14 @@ const covid19ImpactEstimator = (data) => {
     }
   };
   // destruct from impact and severe impact objects
-  const { impact, severeImpact } = outputData;
-  const {
-    // eslint-disable-next-line max-len
-    currentlyInfected, infectionsByRequestedTime, severeCasesByRequestedTime, hospitalBedsByRequestedTime, casesForICUByRequestedTime, casesForVentilatorsByRequestedTime, dollarsInFlight
-  } = { impact, severeImpact };
+
+
   return ({
-    currentlyInfected,
-    infectionsByRequestedTime,
-    severeCasesByRequestedTime,
-    hospitalBedsByRequestedTime,
-    casesForICUByRequestedTime,
-    casesForVentilatorsByRequestedTime,
-    dollarsInFlight
+    outputData
 
   });
   // testing my code
-  // console.log('impact ' + severeImpact.severeCasesByRequestedTime())
+  // console.log('impact ' + severeImpact.severeCasesByRequestedTime());
   // console.log('impact ' + severeImpact.hospitalBedsByRequestedTime());
   // console.log('impact ' + severeImpact.casesForICUByRequestedTime());
   // console.log('impact ' + severeImpact.casesForVentilatorsByRequestedTime());
@@ -145,7 +136,7 @@ const covid19ImpactEstimator = (data) => {
   // console.log(severeImpact.severeCasesByRequestedTime());
   // console.log(severeImpact.hospitalBedsByRequestedTime());
   // console.log(severeImpact.casesForICUByRequestedTime());
-  // console.log(severeImpact.casesForVentilatorsByRequestedTime())
+  // console.log(severeImpact.casesForVentilatorsByRequestedTime());
 };
-covid19ImpactEstimator(inputData);
-export default covid19ImpactEstimator;
+console.log(covid19ImpactEstimator(inputData));
+// export default covid19ImpactEstimator;
