@@ -134,5 +134,5 @@ const covid19ImpactEstimator = (data) => {
   // console.log(severeImpact.casesForICUByRequestedTime());
   // console.log(severeImpact.casesForVentilatorsByRequestedTime())
 };
-module.exports = covid19ImpactEstimator(inputData);
+module.exports = covid19ImpactEstimator;
 // export default covid19ImpactEstimator;
