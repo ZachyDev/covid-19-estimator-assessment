@@ -1,14 +1,27 @@
 /* eslint-disable max-len */
-
+// input data
+const inputData = {
+  region: {
+    name: 'Africa',
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 5,
+    avgDailyIncomePopulation: 0.71
+  },
+  periodType: 'days',
+  timeToElapse: 58,
+  reportedCases: 674,
+  population: 66622705,
+  totalHospitalBeds: 1380614
+};
 const impact = {};
 const severeImpact = {};
 
 // CHALLENGE ONE
 
-const currentlyInfectedEstimate = (data) => {
+const currentlyInfected = () => {
   // destructure reported cases from input data
-  const { reportedCases, periodType } = data;
-  let { timeToElapse } = data;
+  const { reportedCases, periodType } = inputData;
+  let { timeToElapse } = inputData;
 
   if (periodType === 'weeks') {
     timeToElapse *= 7;
@@ -18,7 +31,7 @@ const currentlyInfectedEstimate = (data) => {
     timeToElapse *= 30;
   }
 
-  data.timeToElapse = timeToElapse;
+  inputData.timeToElapse = timeToElapse;
 
   const powerFactor = Math.trunc(timeToElapse / 3);
 
@@ -37,9 +50,9 @@ const currentlyInfectedEstimate = (data) => {
 
 // CHALLENGE TWO
 
-const severeCasesByRequestedTime = (data) => {
+const severeCasesByRequestedTime = () => {
   // destructure requested time from input data
-  const { timeToElapse } = data;
+  const { timeToElapse } = inputData;
 
   const powerFactor = Math.trunc(timeToElapse / 3);
 
@@ -51,8 +64,8 @@ const severeCasesByRequestedTime = (data) => {
   severeImpact.severeCasesByRequestedTime = Math.trunc((15 / 100) * (severeImpact.currentlyInfected * (2 ** powerFactor)));
 };
 
-const hospitalBedsByRequestedTime = (data) => {
-  const { totalHospitalBeds } = data;
+const hospitalBedsByRequestedTime = () => {
+  const { totalHospitalBeds } = inputData;
 
   // available beds based on 35% deficit
   const availableBeds = (35 / 100) * totalHospitalBeds;
@@ -83,10 +96,10 @@ const casesForVentilatorsByRequestedTime = () => {
   severeImpact.casesForVentilatorsByRequestedTime = Math.trunc(severeImpact.infectionsByRequestedTime * (2 / 100));
 };
 
-const dollarsInFlight = (data) => {
+const dollarsInFlight = () => {
   // eslint-disable-next-line no-unused-vars
-  const { region } = data;
-  const { timeToElapse } = data;
+  const { region } = inputData;
+  const { timeToElapse } = inputData;
 
   // how much money the economy is likely to lose over the said period.
   impact.dollarsInFlight = Math.trunc((impact.infectionsByRequestedTime * region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD) / timeToElapse);
@@ -94,23 +107,21 @@ const dollarsInFlight = (data) => {
   severeImpact.dollarsInFlight = Math.trunc((severeImpact.infectionsByRequestedTime * region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD) / timeToElapse);
 };
 
+// eslint-disable-next-line no-unused-vars
 const covid19ImpactEstimator = (data) => {
-  const estimator = () => {
-    currentlyInfectedEstimate(data);
-    severeCasesByRequestedTime(data);
-    hospitalBedsByRequestedTime(data);
-    casesForICUByRequestedTime(data);
-    casesForVentilatorsByRequestedTime();
-    dollarsInFlight(data);
-  };
-
-  estimator(data);
-
-  return ({
-    data,
-    impact,
-    severeImpact
-  });
+  currentlyInfected();
+  severeCasesByRequestedTime();
+  hospitalBedsByRequestedTime();
+  casesForICUByRequestedTime();
+  casesForVentilatorsByRequestedTime();
+  dollarsInFlight();
 };
-
-export default covid19ImpactEstimator;
+// eslint-disable-next-line no-unused-vars
+const output = {
+  // data,
+  impact,
+  severeImpact
+};
+covid19ImpactEstimator();
+console.log(output.severeImpact.currentlyInfected);
+// export default covid19ImpactEstimator;
