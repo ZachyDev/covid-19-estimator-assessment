@@ -1,164 +1,217 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>COVID-19 Estimator</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/gijgo.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/slicknav.css">
-    <link rel="stylesheet" href="css/style.css">
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="With this tool, you can evaluate possible outcome of the Covid19 pandemic in your region. Just put in the data and our algorithm gives you trustworthy estimates. Our calculations are based on WHO estimates.">
+  <title>Covid19 Estimator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <section class="container bg-light">
+    <h1 class="text-center">
+      Covid19 <span class="c-blue">
+        Estimator
+      </span>
+    </h1>
+    <h4 class="text-center text-light">
+      Calculate the impact of the pandemic using WHO estimates
+    </h4>
+    <div class="grid-2">
+      <div>
+        <h5 class="text-center c-blue">
+          Complete this form to get estimate for your region
+        </h5>
 
-    <!-- slider_area_start -->
-    <div class="slider_area">
-        <div class="slider_active owl-carousel">
-            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="slider_text ">
-                                <h3><span>COVID-19 Estimator</span></h3>
-                                <span>#Stay Safe,Sanitize,Observe social distancing</span>
-                                <h3> <span>#BuildForSDGs</span> <br>
-                                    solving problems with technology.</h3>
-                                <a href="./QueryForm/index.html" class="boxed-btn5">Estimator
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <form action="" method="post" >
+          <div class="group">
+            <label for="population">Population :</label>
+            <input type="number" 
+              name="population" 
+              id="population" 
+              data-population 
+              required 
+              placeholder="Enter region Population"
+            >
+          </div>
+  
+          <div class="group">
+            <label for="timeToElapse">Time for Estimate :</label>
+            <input type="number" 
+              name="timeToElapse" 
+              id="timeToElapse" 
+              data-time-to-elapse
+              required 
+              placeholder="Enter TIme for Estimate"
+            >
+          </div>
+
+          <div class="group">
+            <label for="reportedCases">Current Number of Reported Cases :</label>
+            <input type="number" 
+              name="reportedCases" 
+              id="reportedCases" 
+              data-reported-cases
+              required 
+              placeholder="Enter number of reported Cases"
+            >
+          </div>
+  
+          <div class="group">
+            <label for="totalHospitalBeds">Total Hospital Beds in Region :</label>
+            <input type="number" 
+              name="totalHospitalBeds" 
+              id="totalHospitalBeds" 
+              data-total-hospital-beds
+              required 
+              placeholder="Enter number of Hospital Beds in Region"
+            >
+          </div>
+
+          <div class="group">
+            <label for="periodType">Period Type :</label>
+            <select name="periodType" 
+              id="periodType" 
+              data-period-type
+              required
+            >
+              <option value="days">Days</option>
+              <option value="weeks">Weeks</option>
+              <option value="months">Months</option>
+            </select>
+          </div>
+
+          <div class="w-100 text-center">
+            <button type="submit" data-go-estimate >Calculate</button>
+          </div>
+  
+
+        </form>
+      </div>
+  
+
+      <div class="bg-white px-4">
+        <h5 class="text-center c-blue">
+          Your Estimate
+        </h5>
+
+        <p>
+          Region: 
+          <span class="c-blue" id="region"></span>
+        </p>
+
+        <p>
+          Estimate Time: 
+          <span class="c-blue" id="period"></span>
+          day(s)
+        </p>
+
+        <p>
+          Population: 
+          <span class="c-blue" id="populationReport"></span>
+        </p>
+
+        <p>
+          Reported Cases: 
+          <span class="c-blue" id="allReportedCases"></span>
+        </p>
+
+        <p>
+          Total Hospital Beds: 
+          <span class="c-blue" id="hospitalBeds"></span>
+        </p>
+
+        <!-- Best Case -->
+        <div>
+          <h5 class="text-center c-blue">
+            Best Case Scenario
+          </h5>
+
+          <p>
+            Currently Infected: 
+            <span class="c-blue" id="currentlyInfected"></span>
+          </p>
+  
+          <p>
+            Infections By Estimate Time: 
+            <span class="c-blue" id="infectionsByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Severe Cases By Estimate Time: 
+            <span class="c-blue" id="severeCasesByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Available Hospital Beds By Estimate Time: 
+            <span class="c-blue" id="hospitalBedsByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Cases For ICU By Estimate Time: 
+            <span class="c-blue" id="casesForICUByRequestedTime"></span>
+          </p>
+
+          <p>
+            Cases For Ventilators By Estimate Time: 
+            <span class="c-blue" id="casesForVentilatorsByRequestedTime"></span>
+          </p>
+
+          <p>
+            Money Lost in Dollars: 
+            $<span class="c-blue" id="dollarsInFlight"></span>
+          </p>
+
         </div>
+
+        <!-- Worst Case -->
+        <div>
+          <h5 class="text-center c-blue">
+            Worst Case Scenario
+          </h5>
+
+          <p>
+            Currently Infected: 
+            <span class="c-blue" id="severeImpactCurrentlyInfected"></span>
+          </p>
+  
+          <p>
+            Infections By Estimate Time: 
+            <span class="c-blue" id="severeImpactInfectionsByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Severe Cases By Estimate Time: 
+            <span class="c-blue" id="severeImpactSevereCasesByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Available Hospital Beds By Estimate Time: 
+            <span class="c-blue" id="severeImpactHospitalBedsByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Cases For ICU By Estimate Time: 
+            <span class="c-blue" id="severeImpactCasesForICUByRequestedTime"></span>
+          </p>
+
+          <p>
+            Cases For Ventilators By Estimate Time: 
+            <span class="c-blue" id="severeImpactCasesForVentilatorsByRequestedTime"></span>
+          </p>
+
+          <p>
+            Money Lost in Dollars:
+            $<span class="c-blue" id="severeImpactDollarsInFlight"></span>
+          </p>
+
+        </div>
+
+      </div>
+
     </div>
-    <!-- footer -->
-    <footer class="footer">
-        <div class="footer_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-md-6 col-lg-4 ">
-                        <div class="footer_widget">
-                            <div class="footer_logo">
-                                <a href="#">
-                                    <!-- <img src="img/logo.png" alt=""> -->
-                                </a>
-                            </div>
-                            <p class="address_text">Lets defeat Covid-19, <br> #stay indoors <br> keep social distancing.
-                            </p>
-                            <div class="socail_links">
-                                <ul>
-                                    <li>
-                                        <a href="https://facebook.com/mosetizachary" target="_blank">
-                                            <i class="ti-facebook" target="_blank"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://twitter.com/mosetizachary" target="_blank">
-                                            <i class="ti-twitter-alt"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://api.whatsapp.com/send?phone=254741114770" target="_blank">
-                                            <i class="fa fa-whatsapp"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://github.com/ZachyDev" target="_blank">
-                                            <i class="fa fa-github"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+  </section>
 
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-lg-4">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                #Keep it safe
-                            </h3>
-                    </div>
-                   
-        <div class="copy-right_text">
-            <div class="container">
-                <div class="row">
-                    <div class="bordered_1px "></div>
-                    <div class="col-xl-12">
-                        <p class="copy_right text-center">
-                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a style= "color:#fff"; href="https://codewithzachy.000webhostapp.com" target="_blank">Zachary Moseti</a>
-
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    
-
-    <!-- JS here -->
-    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/ajax-form.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/scrollIt.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/nice-select.min.js"></script>
-    <script src="js/jquery.slicknav.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/gijgo.min.js"></script>
-    <!--contact js-->
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
-
-    <script src="js/main.js"></script>
-    <script>
-        $('.datepicker').datepicker({
-            iconsLibrary: 'fontawesome',
-            icons: {
-                rightIcon: '<span class="fa fa-calendar"></span>'
-            }
-        });
-
-        $('.timepicker').timepicker({
-            iconsLibrary: 'fontawesome',
-            icons: {
-                rightIcon: '<span class="fa fa-clock-o"></span>'
-            }
-        });
-    $(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
-});
-    </script>
+  <script type="module" src="./index.js"></script>
 </body>
-
 </html>
