@@ -122,6 +122,6 @@ const output = {
   impact,
   severeImpact
 };
-covid19ImpactEstimator();
-console.log(output.severeImpact.currentlyInfected);
-// export default covid19ImpactEstimator;
+// covid19ImpactEstimator();
+// console.log(output.severeImpact.currentlyInfected);
+export default covid19ImpactEstimator;
