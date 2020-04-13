@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="With this tool, you can evaluate possible outcome of the Covid19 pandemic in your region. Just put in the data and our algorithm gives you trustworthy estimates. Our calculations are based on WHO estimates.">
+  <title>Covid19 Estimator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="container bg-light">
+    <h1 class="text-center">
+      Covid19 <span class="c-blue">
+        Estimator
+      </span>
+    </h1>
+    <h4 class="text-center text-light">
+      Calculate the impact of the pandemic using WHO estimates
+    </h4>
+    <div class="grid-2">
+      <div>
+        <h5 class="text-center c-blue">
+          Complete this form to get estimate for your region
+        </h5>
+
+        <form action="" method="post" >
+          <div class="group">
+            <label for="population">Population :</label>
+            <input type="number" 
+              name="population" 
+              id="population" 
+              data-population 
+              required 
+              placeholder="Enter region Population"
+            >
+          </div>
+  
+          <div class="group">
+            <label for="timeToElapse">Time for Estimate :</label>
+            <input type="number" 
+              name="timeToElapse" 
+              id="timeToElapse" 
+              data-time-to-elapse
+              required 
+              placeholder="Enter TIme for Estimate"
+            >
+          </div>
+
+          <div class="group">
+            <label for="reportedCases">Current Number of Reported Cases :</label>
+            <input type="number" 
+              name="reportedCases" 
+              id="reportedCases" 
+              data-reported-cases
+              required 
+              placeholder="Enter number of reported Cases"
+            >
+          </div>
+  
+          <div class="group">
+            <label for="totalHospitalBeds">Total Hospital Beds in Region :</label>
+            <input type="number" 
+              name="totalHospitalBeds" 
+              id="totalHospitalBeds" 
+              data-total-hospital-beds
+              required 
+              placeholder="Enter number of Hospital Beds in Region"
+            >
+          </div>
+
+          <div class="group">
+            <label for="periodType">Period Type :</label>
+            <select name="periodType" 
+              id="periodType" 
+              data-period-type
+              required
+            >
+              <option value="days">Days</option>
+              <option value="weeks">Weeks</option>
+              <option value="months">Months</option>
+            </select>
+          </div>
+
+          <div class="w-100 text-center">
+            <button type="submit" data-go-estimate >Calculate</button>
+          </div>
+  
+
+        </form>
+      </div>
+  
+
+      <div class="bg-white px-4">
+        <h5 class="text-center c-blue">
+          Your Estimate
+        </h5>
+
+        <p>
+          Region: 
+          <span class="c-blue" id="region"></span>
+        </p>
+
+        <p>
+          Estimate Time: 
+          <span class="c-blue" id="period"></span>
+          day(s)
+        </p>
+
+        <p>
+          Population: 
+          <span class="c-blue" id="populationReport"></span>
+        </p>
+
+        <p>
+          Reported Cases: 
+          <span class="c-blue" id="allReportedCases"></span>
+        </p>
+
+        <p>
+          Total Hospital Beds: 
+          <span class="c-blue" id="hospitalBeds"></span>
+        </p>
+
+        <!-- Best Case -->
+        <div>
+          <h5 class="text-center c-blue">
+            Best Case Scenario
+          </h5>
+
+          <p>
+            Currently Infected: 
+            <span class="c-blue" id="currentlyInfected"></span>
+          </p>
+  
+          <p>
+            Infections By Estimate Time: 
+            <span class="c-blue" id="infectionsByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Severe Cases By Estimate Time: 
+            <span class="c-blue" id="severeCasesByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Available Hospital Beds By Estimate Time: 
+            <span class="c-blue" id="hospitalBedsByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Cases For ICU By Estimate Time: 
+            <span class="c-blue" id="casesForICUByRequestedTime"></span>
+          </p>
+
+          <p>
+            Cases For Ventilators By Estimate Time: 
+            <span class="c-blue" id="casesForVentilatorsByRequestedTime"></span>
+          </p>
+
+          <p>
+            Money Lost in Dollars: 
+            $<span class="c-blue" id="dollarsInFlight"></span>
+          </p>
+
+        </div>
+
+        <!-- Worst Case -->
+        <div>
+          <h5 class="text-center c-blue">
+            Worst Case Scenario
+          </h5>
+
+          <p>
+            Currently Infected: 
+            <span class="c-blue" id="severeImpactCurrentlyInfected"></span>
+          </p>
+  
+          <p>
+            Infections By Estimate Time: 
+            <span class="c-blue" id="severeImpactInfectionsByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Severe Cases By Estimate Time: 
+            <span class="c-blue" id="severeImpactSevereCasesByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Available Hospital Beds By Estimate Time: 
+            <span class="c-blue" id="severeImpactHospitalBedsByRequestedTime"></span>
+          </p>
+  
+          <p>
+            Cases For ICU By Estimate Time: 
+            <span class="c-blue" id="severeImpactCasesForICUByRequestedTime"></span>
+          </p>
+
+          <p>
+            Cases For Ventilators By Estimate Time: 
+            <span class="c-blue" id="severeImpactCasesForVentilatorsByRequestedTime"></span>
+          </p>
+
+          <p>
+            Money Lost in Dollars:
+            $<span class="c-blue" id="severeImpactDollarsInFlight"></span>
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <script type="module" src="./index.js"></script>
+</body>
+</html>
